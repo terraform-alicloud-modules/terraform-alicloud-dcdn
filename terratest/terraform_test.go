@@ -3,6 +3,7 @@ package test
 import (
 	"fmt"
 	"github.com/gruntwork-io/terratest/modules/random"
+	"strings"
 	"testing"
 
 	"github.com/gruntwork-io/terratest/modules/terraform"
@@ -45,7 +46,7 @@ func TestTerraformBasicExampleNew(t *testing.T) {
 
 		// Variables to pass to our Terraform code using -var options
 		Vars: map[string]interface{}{
-			"domain_name":    domainName,
+			"domain_name": domainName,
 			//"check_url":      check_url,
 			"sources":        sources,
 			"status":         status,
@@ -64,12 +65,16 @@ func TestTerraformBasicExampleNew(t *testing.T) {
 	terraform.InitAndApply(t, terraformOptions)
 
 	// Run `terraform output` to get the values of output variables
-	actualDomain := terraform.OutputMap(t, terraformOptions, "this_domain_name")
-	actualStatus := terraform.Output(t, terraformOptions, "this_domain_status")
-	actualDomainConfigIds := terraform.Output(t, terraformOptions, "this_domain_config_ids")
+	actualDomain := trimMarks(terraform.Output(t, terraformOptions, "this_domain_name"), `"`)
+	actualStatus := trimMarks(terraform.Output(t, terraformOptions, "this_domain_status"), `"`)
+	actualDomainConfigIds := terraform.OutputList(t, terraformOptions, "this_domain_config_ids")
 
 	// Verify we're getting back the outputs we expect
 	assert.Equal(t, domainName, actualDomain)
 	assert.Equal(t, status, actualStatus)
-	assert.Equal(t, len(domain_configs), len(actualDomainConfigIds))
+	assert.Equal(t, 1, len(actualDomainConfigIds))
+}
+
+func trimMarks(str string, mark string) string {
+	return strings.TrimPrefix(strings.TrimSuffix(str, mark), mark)
 }
