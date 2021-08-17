@@ -1,17 +1,15 @@
-Terraform module which creates DCDN domain and its config on Alibaba Cloud.
 terraform-alicloud-dcdn
 =====================================================================
 
-English | [简体中文](https://github.com/terraform-alicloud-modules/terraform-alicloud-dcdn/blob/master/README-CN.md)
 
-Terraform module which creates DCDN domain and sets its configs on Alibaba Cloud.
+本 Module 用于在阿里云的 VPC 下创建一个[全站加速域名（DCDN Domain）](https://www.alibabacloud.com/help/product/64812.htm). 
 
-These types of resources are supported:
+本 Module 支持创建以下资源:
 
-* [DCDN Domain](https://registry.terraform.io/providers/aliyun/alicloud/latest/docs/resources/dcdn_domain)
-* [DCDN Domain Config](https://registry.terraform.io/providers/aliyun/alicloud/latest/docs/resources/dcdn_domain_config)
+* [全站加速域名（DCDN Domain）](https://registry.terraform.io/providers/aliyun/alicloud/latest/docs/resources/dcdn_domain)
+* [全站加速域名配置（DCDN Domain Config）](https://registry.terraform.io/providers/aliyun/alicloud/latest/docs/resources/dcdn_domain_config)
 
-## Requirements
+## 版本要求
 
 | Name | Version |
 |------|---------|
@@ -24,10 +22,10 @@ These types of resources are supported:
 |------|---------|
 | <a name="provider_alicloud"></a> [alicloud](#provider\_alicloud) | >= 1.131.0 |
 
-
-## Usage
+## 用法
 
 ```hcl
+
 module "dcdn" {
   source        = "terraform-alicloud-modules/dcdn/alicloud"
   create_domain = true
@@ -68,33 +66,30 @@ module "dcdn" {
     }
   ]
 }
-
 ```
 
-## Notes
+## 注意事项
 
-* This module using AccessKey and SecretKey are from `profile` and `shared_credentials_file`.
-  If you have not set them yet, please install [aliyun-cli](https://github.com/aliyun/aliyun-cli#installation) and configure it.
+* 本 Module 使用的 AccessKey 和 SecretKey 可以直接从 `profile` 和 `shared_credentials_file` 中获取。如果未设置，可通过下载安装 [aliyun-cli](https://github.com/aliyun/aliyun-cli#installation) 后进行配置.
 
-Submit Issues
--------------
-If you have any problems when using this module, please opening a [provider issue](https://github.com/aliyun/terraform-provider-alicloud/issues/new) and let us know.
+提交问题
+------
+如果在使用该 Terraform Module 的过程中有任何问题，可以直接创建一个 [Provider Issue](https://github.com/aliyun/terraform-provider-alicloud/issues/new)，我们将根据问题描述提供解决方案。
 
-**Note:** There does not recommend to open an issue on this repo.
+**注意:** 不建议在该 Module 仓库中直接提交 Issue。
 
-Authors
+作者
 -------
 Created and maintained by He Guimin(@xiaozhu36, heguimin36@163.com)
 
-License
+许可
 ----
 Apache 2 Licensed. See LICENSE for full details.
 
-Reference
+参考
 ---------
 * [Terraform-Provider-Alicloud Github](https://github.com/aliyun/terraform-provider-alicloud)
 * [Terraform-Provider-Alicloud Release](https://releases.hashicorp.com/terraform-provider-alicloud/)
 * [Terraform-Provider-Alicloud Docs](https://registry.terraform.io/providers/aliyun/alicloud/latest/docs)
-
 
 
