@@ -76,7 +76,7 @@ module "dcdn" {
 
 作者
 -------
-Created and maintained by He Guimin(@xiaozhu36, heguimin36@163.com)
+Created and maintained by Alibaba Cloud Terraform Team(terraform@alibabacloud.com)
 
 许可
 ----
@@ -87,5 +87,3 @@ Apache 2 Licensed. See LICENSE for full details.
 * [Terraform-Provider-Alicloud Github](https://github.com/aliyun/terraform-provider-alicloud)
 * [Terraform-Provider-Alicloud Release](https://releases.hashicorp.com/terraform-provider-alicloud/)
 * [Terraform-Provider-Alicloud Docs](https://registry.terraform.io/providers/aliyun/alicloud/latest/docs)
-
-
